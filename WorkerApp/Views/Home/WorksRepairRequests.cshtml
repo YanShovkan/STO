@@ -1,0 +1,65 @@
+﻿@using BusinessLogic.ViewModels
+
+@model List<ReportWorkRepairRequestViewModel>
+@{
+    ViewData["Title"] = "WorksRepairRequests";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Заявки на ремонт по выбранным работам</h1>
+</div>
+
+<form method="post">
+    <div class="text-center">
+        @{
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 40%">
+                            Работа
+                        </th>
+                        <th style="width: 20%">
+                            Кол-во заявок
+                        </th>
+                        <th style="width: 40%">
+                            Дата ремонта
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="width: 40%">
+                                @Html.DisplayFor(modelItem => item.WorkName)
+                            </td>
+                            <td style="width: 20%">
+                                @Html.DisplayFor(modelItem => item.TotalCount)
+                            </td>
+                            <td style="width: 40%">
+                            </td>
+                        </tr>
+                        @foreach (var elem in item.RepairRequests)
+                        {
+                            <tr>
+                                <td style="width: 40%">
+                                </td>
+                                <td style="width: 20%">
+                                </td>
+                                <td style="width: 40%">
+                                    @Html.DisplayFor(rec => elem)
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+        }
+    </div>
+    <br />
+    <div class="row text-center">
+        <div class="col-6"><input type="submit" name="todo" id="todo" value="импорт в doc" class="btn btn-primary" /></div>
+        <div class="col-6"><input type="submit" name="todo" id="todo" value="импорт в xls" class="btn btn-primary" /></div>
+        </div>
+</form>

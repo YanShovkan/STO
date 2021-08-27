@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "CreatePayment";
+}
+<div class="text-center">
+    <h2 class="display-4">Оплата работ</h2>
+</div>
+<br />
+<form method="post">
+    <div class="text-center">
+        <div class="row">
+            <div class="col-12">Работа:</div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+                <select id="work" name="work" class="form-control" asp-items="@(new SelectList(@ViewBag.Works, "Id", "RepairRequestWorkName"))"></select>
+            </div>
+            <div class="col-3">
+                </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-12">Оплачено:</div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <input type="text" id="paidSum" name="paidSum" readonly="true" />
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-12">Останется оплатить:</div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <input type="text" id="leftToPay" name="leftToPay" readonly="true" />
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-12">Сумма к оплате:</div>
+        </div>
+        <div class="row">
+            <div class="col-12"><input type="text" name="sum" id="sum" /></div>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row text-center">
+        <div class="col-12"><input type="submit" name="todo" id="todo" value="Оплатить" class="btn btn-primary" /></div>
+    </div>
+
+</form>
+
+<script>
+        $('#work').on('click', function () { fillfields(); });
+        function fillfields() {
+            var work = $('#work').val();
+            if (work) {
+                $.ajax({
+                    method: "POST",
+                    url: "/Home/Calc",
+                    data: { work: work },
+                    success: function (result) {
+                        $("#paidSum").val(result[0]);
+                        $("#leftToPay").val(result[1]);
+                    }
+                });
+            };
+        }
+</script>

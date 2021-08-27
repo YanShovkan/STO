@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Work";
+}
+<div class="text-center">
+    <h2 class="display-4">Работа</h2>
+</div>
+<br />
+<form method="post">
+    <div class="text-center">
+        <div class="row">
+            <div class="col-12">Название:</div>
+            <div class="col-12"><input type="text" name="workName" id="workName" value="@ViewBag.WorkName" /></div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-12">Стоимость:</div>
+            <div class="col-12"><input type="text" name="workPrice" id="workPrice" value="@ViewBag.WorkPrice" /></div>
+        </div>
+    </div>
+    <br />
+    <div class="row text-center">
+        <div class="col-12"><input type="submit" name="todo" id="todo" value="@ViewBag.ToDo" class="btn btn-primary" /></div>
+    </div>
+</form>

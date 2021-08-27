@@ -1,0 +1,63 @@
+﻿@using BusinessLogic.ViewModels
+
+@model List<ReportPaymentViewModel>
+@{
+    ViewData["Title"] = "Report";
+}
+
+<head>
+</head>
+
+<body>
+    <div class="text-center">
+        <h1 class="display-4">Оплаты по работам</h1>
+    </div>
+
+    <form method="post">
+
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th>
+                        Дата платежа
+                    </th>
+                    <th>
+                        Имя клиента
+                    </th>
+                    <th>
+                        Название работы
+                    </th>
+                    <th>
+                        Сумма
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PaymentDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ClientName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.WorkName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sum)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="row text-center">
+            <div class="col-4"></div>
+            <div class="col-4"><input type="submit" id="ToDo" name="ToDo" value="Отправить на почту в формате pdf" class="btn btn-primary" /></div>
+            <div class="col-4"></div>
+        </div>
+
+    </form>
+</body>

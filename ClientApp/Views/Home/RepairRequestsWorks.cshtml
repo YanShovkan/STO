@@ -1,0 +1,74 @@
+﻿@using BusinessLogic.ViewModels
+
+@model List<ReportRepairRequestWorkViewModel>
+@{
+    ViewData["Title"] = "RepairRequestsWorks";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Работы по выбранным заявкам на ремонт</h1>
+</div>
+<br />
+<form method="post">
+    <div class="text-center">
+        @{
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 30%">
+                            Дата ремонта
+                        </th>
+
+                        <th style="width: 10%">
+                            Кол-во работ
+                        </th>
+                        <th style="width: 30%">
+                            Работа
+                        </th>
+                        <th style="width: 30%">
+                            Стоимость
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="width: 30%">
+                                @Html.DisplayFor(modelItem => item.RepairDate)
+                            </td>
+                            <td style="width: 20%">
+                                @Html.DisplayFor(modelItem => item.TotalCount)
+                            </td>
+                            <td style="width: 30%">
+                            </td>
+                            <td style="width: 30%">
+                            </td>
+                        </tr>
+                        @foreach (var elem in item.Works)
+                        {
+                            <tr>
+                                <td style="width: 30%">
+                                </td>
+                                <td style="width: 20%">
+                                </td>
+                                <td style="width: 30%">
+                                    @Html.DisplayFor(rec => elem.Item1)
+                                </td>
+                                <td style="width: 30%">
+                                    @Html.DisplayFor(rec => elem.Item2)
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+    <br />
+    <div class="row text-center">
+        <div class="col-6"><input type="submit" name="todo" id="todo" value="импорт в doc" class="btn btn-primary" /></div>
+        <div class="col-6"><input type="submit" name="todo" id="todo" value="импорт в xls" class="btn btn-primary" /></div>
+
+    </div>
+</form>

@@ -1,0 +1,35 @@
+﻿@using BusinessLogic.ViewModels
+
+@model List<WorkViewModel>
+@{
+    ViewData["Title"] = "CreateRepairRequest";
+}
+
+<div class="text-center">
+    <h1 class="display-3">Выберите работы</h1>
+</div>
+<br />
+<form method="post">
+    <div class="row text-center">
+        <div class="col-3">
+        </div>
+        <div class="col-6">
+            <select id="works" name="works" class="form-control" asp-items="@(new MultiSelectList(ViewBag.Works, "Id", "WorkName"))" multiple></select>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-3">
+        </div>
+        <div class="col-6">
+            <input type="datetime-local" id="date" name="date">
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+    <br />
+    <div class="row text-center">
+        <div class="col-12"><input type="submit" value="Оставить заявку" class="btn btn-primary" /></div>
+    </div>
+</form>

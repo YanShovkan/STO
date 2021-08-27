@@ -1,0 +1,63 @@
+﻿@using BusinessLogic.ViewModels
+
+@model List<ReportCostItemViewModel>
+@{
+    ViewData["Title"] = "Report";
+}
+
+<head>
+</head>
+
+<body>
+    <div class="text-center">
+        <h1 class="display-4">Статьи затрат на мои запросы</h1>
+    </div>
+
+    <form method="post">
+
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th>
+                        Статья затрат
+                    </th>
+                    <th>
+                        Имя клиента
+                    </th>
+                    <th>
+                        Дата ремонта
+                    </th>
+                    <th>
+                        Количество
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CostItemName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ClientName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RepairDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Count)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="row text-center">
+            <div class="col-4"></div>
+            <div class="col-4"><input type="submit" id="ToDo" name="ToDo" value="Отправить на вашу почту в формате pdf" class="btn btn-primary" /></div>
+            <div class="col-4"></div>
+        </div>
+
+    </form>
+</body>

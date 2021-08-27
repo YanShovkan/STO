@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "CreateRepairRequestCostItem";
+}
+<div class="text-center">
+    <h2 class="display-4">Привязка статьи затрат к запросу на ремонт</h2>
+</div>
+<br />
+<form method="post">
+    <div class="row text-center">
+        <div class="col-12">Дата ремонта:</div>
+    </div>
+    <div class="row text-center">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <select id="repairRequest" name="repairRequest" class="form-control" asp-items="@(new SelectList(@ViewBag.RepairRequests,"Id", "RepairRequestDate"))"></select>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <br />
+    <div class="row text-center">
+        <div class="col-12">Статья затрат:</div>
+
+    </div>
+    <div class="row text-center">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <select id="costItem" name="costItem" class="form-control" asp-items="@(new SelectList(@ViewBag.CostItems,"Id", "CostItemName"))"></select>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <br />
+    <div class="row text-center">
+        <div class="col-12">Количество:</div>
+    </div>
+    <div class="row text-center">
+        <div class="col-4"></div>
+
+        <div class="col-4"><input type="text" name="count" id="count" /></div>
+
+        <div class="col-4"></div>
+
+    </div>
+    <br />
+    <div class="row text-center">
+        <div class="col-12"><input type="submit" value="привязать" class="btn btn-primary" /></div>
+    </div>
+</form>

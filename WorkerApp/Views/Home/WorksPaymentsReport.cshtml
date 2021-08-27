@@ -1,0 +1,69 @@
+﻿@using BusinessLogic.ViewModels
+
+@model List<ReportPaymentViewModel>
+@{
+    ViewData["Title"] = "WorksPaymentsReport";
+}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="text-center">
+        <h1 class="display-4">Оплата работ</h1>
+    </div>
+    <br />
+
+    <form method="post">
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-auto">
+                    С
+                </div>
+                <div class="col-md-auto">
+                    <input data-date-format="dd/mm/yyyy" id="DateFrom" name="DateFrom">
+                </div>
+                <div class="col-md-auto">
+                    ПО
+                </div>
+                <br />
+                <div class="col-md-auto">
+                    <input data-date-format="dd/mm/yyyy" id="DateTo" name="DateTo">
+                </div>
+            </div>
+            <br />
+            <div class="row text-center">
+                <div class="col-12">
+                    <input type="submit" name="todo" id="todo" value="Показать на экране" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            $('#DateFrom').datepicker({
+                weekStart: 1,
+                daysOfWeekHighlighted: "6,0",
+                autoclose: true,
+                todayHighlight: true,
+            });
+            $('#DateFrom').datepicker("setDate", new Date());
+        </script>
+        <script type="text/javascript">
+            $('#DateTo').datepicker({
+                weekStart: 1,
+                daysOfWeekHighlighted: "6,0",
+                autoclose: true,
+                todayHighlight: true,
+            });
+            $('#DateTo').datepicker("setDate", new Date());
+        </script>
+    </form>
+</body>

@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "CostItem";
+}
+<div class="text-center">
+    <h2 class="display-4">Статья затрат</h2>
+</div>
+<form method="post">
+    <div class="text-center">
+        <div class="row">
+            <div class="col-12">Название:</div>
+            <div class="col-12"><input type="text" name="costItemName" id="costItemName" value="@ViewBag.CostItemName" /></div>
+        </div>
+        <br />
+        <div class="row text-center">
+            <div class="col-12"><input type="submit" name="todo" id="todo" value="@ViewBag.ToDo" class="btn btn-primary" /></div>
+        </div>
+    </div>
+</form>

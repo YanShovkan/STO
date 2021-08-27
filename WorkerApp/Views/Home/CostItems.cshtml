@@ -1,0 +1,57 @@
+﻿@using BusinessLogic.ViewModels
+
+@model List<CostItemViewModel>
+
+@{
+    ViewData["Title"] = "CostItems";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Статьи затрат</h1>
+</div>
+<br />
+<form method="post">
+    <div class="text-center">
+        <p>
+            <a asp-action="CostItem" asp-route-ToDo="создать">Создать новую статью затрат</a>
+        </p>
+        <p>
+            <a class="btn-outline-info" asp-action="CreateRepairRequestCostItem" asp-route-ToDo="привязатькзапросу">Указать статьи затрат на запросы</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Статья затрат
+                    </th>
+                    <th>
+                        Сколько затрачено
+                    </th>
+                    <th>
+                        Действие
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CostItemName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CostItemCount)
+                        </td>
+                        <td>
+                            <a class="btn-outline-warning" asp-action="CostItem" asp-route-id="@item.Id" asp-route-ToDo="изменить">Изменить</a>
+                            <a class="btn-outline-danger" asp-action="CostItem" asp-route-id="@item.Id" asp-route-ToDo="удалить">Удалить</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</form>

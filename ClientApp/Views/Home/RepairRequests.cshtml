@@ -1,0 +1,72 @@
+﻿@using BusinessLogic.ViewModels
+
+@model List<RepairRequestViewModel>
+
+@{
+    ViewData["Title"] = "RepairRequests";
+}
+<div class="text-center">
+    <h1 class="display-4">Мои запросы на ремонт</h1>
+</div>
+
+<form method="post">
+    <div class="text-center">
+        <p>
+            <a asp-action="CreateRepairRequest">Оставить заявку на ремонт</a>
+        </p>
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th>
+                        Ваше имя
+                    </th>
+                    <th>
+                        Назначенная дата
+                    </th>
+                    <th>
+                        Итоговая стоимость
+                    </th>
+                    <th>
+                        Статус
+                    </th>
+                    <th>
+                        Оплаченная сумма
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RepairRequestClientName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RepairRequestDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RepairRequestTotalPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RepairRequesStatus)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RepairRequestTotalPaidSum)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <div class="text-center">
+        <h2 class="text-lg-center">Выбор заявок на ремонт</h2>
+    </div>
+    <p>
+        <select id="repairRequests" name="repairRequests" class="form-control" asp-items="@(new MultiSelectList(ViewBag.RepairRequests, "Id", "RepairRequestDate"))" multiple></select>
+    </p>
+
+    <div class="row text-center">
+        <div class="col-12"><input type="submit" value="Увидеть работы в выбранных заявках" class="btn btn-primary" /></div>
+    </div>
+</form>
